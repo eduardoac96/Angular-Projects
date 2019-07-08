@@ -1,0 +1,14 @@
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\bin\Debug\netcoreapp2.2\WebPaymentsApi.deps.json
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\bin\Debug\netcoreapp2.2\WebPaymentsApi.runtimeconfig.json
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\bin\Debug\netcoreapp2.2\WebPaymentsApi.runtimeconfig.dev.json
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\bin\Debug\netcoreapp2.2\WebPaymentsApi.dll
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\obj\Debug\netcoreapp2.2\WebPaymentsApi.csprojAssemblyReference.cache
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\obj\Debug\netcoreapp2.2\WebPaymentsApi.csproj.CoreCompileInputs.cache
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\obj\Debug\netcoreapp2.2\WebPaymentsApi.RazorAssemblyInfo.cache
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\obj\Debug\netcoreapp2.2\WebPaymentsApi.RazorAssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\obj\Debug\netcoreapp2.2\WebPaymentsApi.AssemblyInfoInputs.cache
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\obj\Debug\netcoreapp2.2\WebPaymentsApi.AssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\obj\Debug\netcoreapp2.2\WebPaymentsApi.RazorTargetAssemblyInfo.cache
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\bin\Debug\netcoreapp2.2\WebPaymentsApi.pdb
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\obj\Debug\netcoreapp2.2\WebPaymentsApi.dll
+C:\Users\e.alvarado\source\repos\Payments\WebPaymentsApi\obj\Debug\netcoreapp2.2\WebPaymentsApi.pdb
