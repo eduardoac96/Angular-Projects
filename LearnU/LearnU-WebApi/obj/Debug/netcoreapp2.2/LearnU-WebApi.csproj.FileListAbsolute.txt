@@ -1,0 +1,17 @@
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\bin\Debug\netcoreapp2.2\LearnU-WebApi.deps.json
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\bin\Debug\netcoreapp2.2\LearnU-WebApi.runtimeconfig.json
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\bin\Debug\netcoreapp2.2\LearnU-WebApi.runtimeconfig.dev.json
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\bin\Debug\netcoreapp2.2\LearnU-WebApi.dll
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\bin\Debug\netcoreapp2.2\LearnU-WebApi.pdb
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.csprojAssemblyReference.cache
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.csproj.CoreCompileInputs.cache
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.RazorAssemblyInfo.cache
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.RazorAssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.AssemblyInfoInputs.cache
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.AssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.dll
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.pdb
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\bin\Debug\netcoreapp2.2\LearnU-DomainEntities.dll
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\bin\Debug\netcoreapp2.2\LearnU-DomainEntities.pdb
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-WebApi\obj\Debug\netcoreapp2.2\LearnU-WebApi.csproj.CopyComplete

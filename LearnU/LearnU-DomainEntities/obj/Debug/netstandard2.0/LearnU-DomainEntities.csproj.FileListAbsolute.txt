@@ -1,0 +1,12 @@
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\bin\Debug\netstandard2.0\LearnU-DomainEntities.deps.json
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\bin\Debug\netstandard2.0\LearnU-DomainEntities.dll
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\bin\Debug\netstandard2.0\LearnU-DomainEntities.pdb
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\obj\Debug\netstandard2.0\LearnU-DomainEntities.csprojAssemblyReference.cache
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\obj\Debug\netstandard2.0\LearnU-DomainEntities.csproj.CoreCompileInputs.cache
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\obj\Debug\netstandard2.0\LearnU-DomainEntities.AssemblyInfoInputs.cache
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\obj\Debug\netstandard2.0\LearnU-DomainEntities.AssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\obj\Debug\netstandard2.0\LearnU-DomainEntities.dll
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\obj\Debug\netstandard2.0\LearnU-DomainEntities.pdb
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+C:\Users\e.alvarado\source\repos\LearnU\LearnU-DomainEntities\obj\Debug\netstandard2.0\LearnU-DomainEntities.csproj.CopyComplete
