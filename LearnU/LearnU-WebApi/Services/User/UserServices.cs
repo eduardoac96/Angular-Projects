@@ -104,7 +104,7 @@ namespace LearnU_WebApi.Services.User
                 return null;
 
             // Checking given credentials
-            if (!PasswordHelper.VerifyPasswordHash(password, user.Password, user.Password))
+            if (!PasswordHelper.VerifyPasswordHash(password, user.PasswordHash, user.Password))
                 return null;
 
             // Successful Authentication
