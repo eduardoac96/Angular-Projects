@@ -41,7 +41,7 @@ namespace LearnU_WebApi
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-
+            services.AddCors();
             // Configuring automapper to easily convert between entities and resources and the other way around
             services.AddAutoMapper();
 
@@ -117,6 +117,10 @@ namespace LearnU_WebApi
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
