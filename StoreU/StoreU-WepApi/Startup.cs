@@ -48,14 +48,14 @@ namespace StoreU_WepApi
                 {
                     OnTokenValidated = context =>
                     {
-                        var repository = context.HttpContext.RequestServices.GetRequiredService<IUserRepository>();
-                        var userId = Guid.Parse(context.Principal.Identity.Name); // When logging in we're storing the user id into the Name property
-                        var user = repository.GetUser(userId).Result;
-                        if (user == null)
-                        {
-                            // If user no longer exists
-                            context.Fail("Unauthorized");
-                        }
+                        //var repository = context.HttpContext.RequestServices.GetRequiredService<IUserRepository>();
+                        //var userId = Guid.Parse(context.Principal.Identity.Name); // When logging in we're storing the user id into the Name property
+                        //var user = repository.GetUser(userId).Result;
+                        //if (user == null)
+                        //{
+                        //    // If user no longer exists
+                        //    context.Fail("Unauthorized");
+                        //}
                         return Task.CompletedTask;
                     }
                 };
