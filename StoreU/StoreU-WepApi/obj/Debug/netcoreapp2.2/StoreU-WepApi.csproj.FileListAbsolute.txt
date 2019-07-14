@@ -1,0 +1,14 @@
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WepApi.deps.json
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WepApi.runtimeconfig.json
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WepApi.runtimeconfig.dev.json
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WepApi.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.csprojAssemblyReference.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.csproj.CoreCompileInputs.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.RazorAssemblyInfo.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.RazorAssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.AssemblyInfoInputs.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.AssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.RazorTargetAssemblyInfo.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WepApi.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.pdb
