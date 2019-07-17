@@ -11,3 +11,11 @@ C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2\StoreU-UnitTests.AssemblyInfo.cs
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2\StoreU-UnitTests.dll
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2\StoreU-UnitTests.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2\StoreU-DomainEntities.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2\StoreU-WebApi.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2\StoreU-WebApi.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2\StoreU-DomainEntities.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Core.xml
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2\StoreU-UnitTests.csprojAssemblyReference.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2\StoreU-UnitTests.csproj.CopyComplete

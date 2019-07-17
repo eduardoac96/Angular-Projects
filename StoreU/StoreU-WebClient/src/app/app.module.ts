@@ -1,18 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { } from 'automapper-ts';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app.component'; 
+import { SharedModule } from './shared/shared.module'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
+  imports: [ 
+    AppRoutingModule,
+    SharedModule,
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor() {
+    automapper.createMap('registerForm', 'UserMaintenance');
+    automapper.createMap('LoginForm', 'UserLogin');
+  }
+
+}

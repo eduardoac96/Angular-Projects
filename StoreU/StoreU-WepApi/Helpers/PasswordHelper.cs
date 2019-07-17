@@ -38,5 +38,4 @@ namespace StoreU_WebApi.Helpers
             return true;
         }
     }
-
 }

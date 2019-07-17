@@ -119,30 +119,30 @@ namespace StoreU_WebApi.Controllers
             return Ok(dtoUser);
         }
 
-        [HttpGet]
-        [Authorize(nameof(Constants.PolicyNames.MustBeAdministrator))]
-        public async Task<IActionResult> GetUsers()
-        {
-            var repoUsers = await _repository.GetUsers();
-            var dtoUsers = _mapper.Map<IEnumerable<UserDto>>(repoUsers);
-            return Ok(dtoUsers);
-        }
+        //[HttpGet]
+        //[Authorize(nameof(Constants.PolicyNames.MustBeAdministrator))]
+        //public async Task<IActionResult> GetUsers()
+        //{
+        //    var repoUsers = await _repository.GetUsers();
+        //    var dtoUsers = _mapper.Map<IEnumerable<UserDto>>(repoUsers);
+        //    return Ok(dtoUsers);
+        //}
 
-        [HttpGet("paginated")]
-        [Authorize(nameof(Constants.PolicyNames.MustBeAntiqueUser))]
-        public async Task<IActionResult> GetUsersPaginated(string sortField, string sortDirection, int maxRecordsPerPage, int pageIndex, string id, string displayName, string username, string role)
-        {
-            if (maxRecordsPerPage <= 0 || pageIndex < 0)
-            {
-                return BadRequest(new ActionResponseDto("Invalid parameters for paginated search"));
-            }
-            var paginatedResult = await _repository.GetUsersPaginated(sortField, sortDirection, maxRecordsPerPage, pageIndex, id, displayName, username, role);
-            return Ok(new PaginatedDto<UserDto>
-            {
-                TotalRecords = paginatedResult.TotalUsers,
-                FilteredRecords = _mapper.Map<IEnumerable<UserDto>>(paginatedResult.PaginatedUsers)
-            });
-        }
+        //[HttpGet("paginated")]
+        //[Authorize(nameof(Constants.PolicyNames.MustBeAntiqueUser))]
+        //public async Task<IActionResult> GetUsersPaginated(string sortField, string sortDirection, int maxRecordsPerPage, int pageIndex, string id, string displayName, string username, string role)
+        //{
+        //    if (maxRecordsPerPage <= 0 || pageIndex < 0)
+        //    {
+        //        return BadRequest(new ActionResponseDto("Invalid parameters for paginated search"));
+        //    }
+        //    var paginatedResult = await _repository.GetUsersPaginated(sortField, sortDirection, maxRecordsPerPage, pageIndex, id, displayName, username, role);
+        //    return Ok(new PaginatedDto<UserDto>
+        //    {
+        //        TotalRecords = paginatedResult.TotalUsers,
+        //        FilteredRecords = _mapper.Map<IEnumerable<UserDto>>(paginatedResult.PaginatedUsers)
+        //    });
+        //}
 
 
 

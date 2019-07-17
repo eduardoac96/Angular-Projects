@@ -7,3 +7,6 @@ C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstand
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstandard2.0\StoreU-DomainEntities.pdb
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\obj\Debug\netstandard2.0\StoreU-DomainEntities.dll
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\obj\Debug\netstandard2.0\StoreU-DomainEntities.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\obj\Debug\netstandard2.0\StoreU-DomainEntities.csproj.CopyComplete

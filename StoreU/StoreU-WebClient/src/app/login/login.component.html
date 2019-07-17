@@ -1,0 +1,96 @@
+<!-- <app-loader></app-loader> -->
+
+
+<div class="login-page">
+ 
+  <div class="content">
+    <form
+      #loginForm="ngForm"
+      class="login-form"
+      fxFlex
+      (ngSubmit)="login(loginForm)"
+    >
+      <div class="text-center">
+        <h2 class="app-name">Store U</h2>
+      </div>
+      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input
+              matInput
+              placeholder="Correo electronico."
+              ngModel
+              name="username"
+              type="email"
+              email
+              required
+              maxlength="30"
+              #usernameCtrl="ngModel"
+            />
+            <mat-error *ngIf="usernameCtrl?.errors?.required"
+              >Campo requerido</mat-error
+            >
+
+            <mat-error  *ngIf="usernameCtrl?.errors?.email" >
+                Correo debe de tener un formato valido. 
+            </mat-error >
+
+            <mat-error *ngIf="usernameCtrl?.errors?.maxlength"
+              >Excede el número de caracteres.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input
+              type="password"
+              matInput
+              placeholder="Contraseña"
+              ngModel
+              name="password"
+              required
+              maxlength="30"
+              #passwordCtrl="ngModel"
+            />
+            <mat-error *ngIf="passwordCtrl?.errors?.required"
+              >Campo requerido</mat-error
+            >
+            <mat-error *ngIf="passwordCtrl?.errors?.maxlength"
+              >Excede el número de caracteres.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-100"
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            Iniciar Sesión
+          </button>
+        </div>
+      </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill class="text-center forgot-password">
+          <a [routerLink]="['/forgot']">Olvide mi contraseña</a>
+        </div>
+      </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill class="text-center sign-up">
+          ¿Quieres ser parte de Store U? <a [routerLink]="['/register']" >Registrate</a>
+        </div>
+      </div>
+    </form>
+  </div>
+ 
+</div>
