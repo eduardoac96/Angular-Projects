@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace StoreU_WepApi.Controllers
+namespace StoreU_WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

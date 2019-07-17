@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
@@ -15,8 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Repositories\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\StoreU-DomainEntities\StoreU-DomainEntities.csproj" />
   </ItemGroup>
 
 </Project>

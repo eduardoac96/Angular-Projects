@@ -1,9 +1,9 @@
-C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstandard2.0\StoreU-DomainEntities.deps.json
-C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstandard2.0\StoreU-DomainEntities.dll
-C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstandard2.0\StoreU-DomainEntities.pdb
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\obj\Debug\netstandard2.0\StoreU-DomainEntities.csprojAssemblyReference.cache
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\obj\Debug\netstandard2.0\StoreU-DomainEntities.csproj.CoreCompileInputs.cache
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\obj\Debug\netstandard2.0\StoreU-DomainEntities.AssemblyInfoInputs.cache
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\obj\Debug\netstandard2.0\StoreU-DomainEntities.AssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstandard2.0\StoreU-DomainEntities.deps.json
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstandard2.0\StoreU-DomainEntities.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\bin\Debug\netstandard2.0\StoreU-DomainEntities.pdb
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\obj\Debug\netstandard2.0\StoreU-DomainEntities.dll
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-DomainEntities\obj\Debug\netstandard2.0\StoreU-DomainEntities.pdb

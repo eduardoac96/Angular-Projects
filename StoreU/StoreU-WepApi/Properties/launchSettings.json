@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "StoreU_WepApi": {
+    "StoreU_WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,9 +16,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using StoreU_WepApi.Model;
+using StoreU_WebApi.Model;
+using StoreU_WebApi.Services.Users;
 
-namespace StoreU_WepApi
+namespace StoreU_WebApi
 {
     public class Startup
     {
@@ -35,6 +37,8 @@ namespace StoreU_WepApi
 
             services.AddDbContext<StoreUContext>(o => o.UseSqlServer(dbConnectionString));
             services.AddCors();
+
+            services.AddAutoMapper();
             // Configuring the JWT Authentication
             var signingKey = Encoding.ASCII.GetBytes(_configuration["AppSettings:Secret"]);
             services.AddAuthentication(x =>
@@ -75,6 +79,9 @@ namespace StoreU_WepApi
             services.AddAuthorization();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddScoped<IUsersRepository, UsersService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

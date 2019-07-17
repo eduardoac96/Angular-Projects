@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreU_WepApi.Model
+namespace StoreU_WebApi.Model
 {
     public partial class Users
     {

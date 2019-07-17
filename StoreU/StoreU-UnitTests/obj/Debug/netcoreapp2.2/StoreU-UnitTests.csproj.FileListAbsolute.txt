@@ -6,7 +6,6 @@ C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2\StoreU-UnitTests.runtimeconfig.dev.json
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2\StoreU-UnitTests.dll
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\bin\Debug\netcoreapp2.2\StoreU-UnitTests.pdb
-C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2\StoreU-UnitTests.csprojAssemblyReference.cache
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2\StoreU-UnitTests.csproj.CoreCompileInputs.cache
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2\StoreU-UnitTests.AssemblyInfoInputs.cache
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-UnitTests\obj\Debug\netcoreapp2.2\StoreU-UnitTests.AssemblyInfo.cs

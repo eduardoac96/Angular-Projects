@@ -12,3 +12,6 @@ C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\St
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WepApi.pdb
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.dll
 C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-DomainEntities.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-DomainEntities.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WepApi.csproj.CopyComplete

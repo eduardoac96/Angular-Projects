@@ -1,0 +1,17 @@
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.csproj.CoreCompileInputs.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.RazorAssemblyInfo.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.RazorAssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.AssemblyInfoInputs.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.AssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WebApi.deps.json
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WebApi.runtimeconfig.json
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WebApi.runtimeconfig.dev.json
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WebApi.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-WebApi.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-DomainEntities.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\bin\Debug\netcoreapp2.2\StoreU-DomainEntities.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.csprojAssemblyReference.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.csproj.CopyComplete
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-WepApi\obj\Debug\netcoreapp2.2\StoreU-WebApi.pdb

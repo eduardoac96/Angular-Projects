@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace StoreU_WepApi.Model
+namespace StoreU_WebApi.Model
 {
     public partial class StoreUContext : DbContext
     {

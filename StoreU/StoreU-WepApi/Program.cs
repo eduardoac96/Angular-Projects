@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace StoreU_WepApi
+namespace StoreU_WebApi
 {
     public class Program
     {
