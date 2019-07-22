@@ -62,11 +62,11 @@ namespace LearnU_WebApi.Controllers
                 return CreatedAtRoute(nameof(Constants.RouteNames.GetUser), new { userId = userToReturnDto.UserId }, userToReturnDto);
             }
             catch (Exception ex)
-            { 
+            {
+                return StatusCode(500, new ActionResponseDTO(ex.Message, false));
 
-                throw ex;
             }
-          
+
         }
         [AllowAnonymous]
         [HttpGet("authenticate")]

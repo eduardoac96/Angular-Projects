@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using Xunit;
 using StoreU_UnitTests.User;
 using StoreU_WebApi.Services.Users;
+using StoreU_WebApi.Helpers;
 
 namespace StoreU_UnitTests
 {
@@ -24,7 +25,7 @@ namespace StoreU_UnitTests
         {
             var mapperConfig = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Users, UserDto>();
+                cfg.CreateMap<Users, UserDto>().ReverseMap();
             });
 
             var mapper = mapperConfig.CreateMapper();
@@ -50,11 +51,19 @@ namespace StoreU_UnitTests
         //}
 
         [Fact]
+        public void GeneratePassword()
+        {
+        }
+
+        [Fact]
         public void AddUsers_Test()
         {
             try
             {
 
+
+                var password = PasswordHelper.CreatePasswordHash("Eduardo0$");
+                 
                 var response = _userController.Register(new UserDto
                 {
                     UserId = Guid.NewGuid(),
@@ -62,10 +71,11 @@ namespace StoreU_UnitTests
                     LastName = "Alvarado",
                     UserName = "Cortes",
                     RoleId = 90,
-                    PasswordRaw = "eduard0210896",
-                    RegistryDate = DateTime.Now
-                });
-
+                    PasswordRaw = "Eduardo0$",
+                    Password= password.PasswordSalt,
+                    RegistryDate = DateTime.Now,
+                   
+                }).Result;
 
             }
             catch (Exception ex)

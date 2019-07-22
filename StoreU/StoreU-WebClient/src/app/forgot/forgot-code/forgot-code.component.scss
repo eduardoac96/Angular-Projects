@@ -1,0 +1,57 @@
+.forgot-password {
+    margin: 20px 0px 0px 0px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    background-color: transparent;
+    border: 0;
+    color: #0073b1;
+  }
+  a:visited {
+    color: #0073b1;
+  }
+  
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+    color: #006097;
+  }
+  
+  
+  .forgot-page {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(#2c3e50, #4ca1af);
+  }
+  
+  .forgot-page > .content {
+    z-index: 1;
+    width: 60%;
+    margin: 5%;
+    .app-name {
+      margin-top: 0px;
+      padding-bottom: 10px;
+      font-size: 32px;
+    }
+  }
+  
+  .forgot-form {
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 0 10px #ddd;
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px white inset;
+    }
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  .w-100 {
+    width: 100%;
+  }
+  

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StoreU_WebApi.Model
 {
@@ -9,7 +11,8 @@ namespace StoreU_WebApi.Model
         {
             UserPlan = new HashSet<UserPlan>();
         }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PlanId { get; set; }
         public string PlanName { get; set; }
         public string PlanDescription { get; set; }

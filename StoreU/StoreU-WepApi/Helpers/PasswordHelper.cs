@@ -9,6 +9,7 @@ namespace StoreU_WebApi.Helpers
     {
         public static (byte[] PasswordHash, byte[] PasswordSalt) CreatePasswordHash(this string password)
         {
+             
             if (password == null) throw new ArgumentNullException("password");
             if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
             using (var hmac = new System.Security.Cryptography.HMACSHA512())

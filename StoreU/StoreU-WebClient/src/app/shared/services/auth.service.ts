@@ -1,14 +1,15 @@
 
-import { Subject, Observable, throwError } from 'rxjs'; 
+import { Subject, Observable, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { BaseService } from './base.service';
 import { UserDisplay } from 'src/app/models/user/user-display.model';
 import { UserLogin } from 'src/app/models/user/user-login.model';
+import { UserChangePassword } from 'src/app/models/user/user-changePassword.model';
 
 export class AuthService extends BaseService {
-    
+
     constructor(
         private http: HttpClient,
         private snackBar: MatSnackBar
@@ -58,7 +59,7 @@ export class AuthService extends BaseService {
         let params = new HttpParams();
         params = params.append('username', userToLogin.username);
         params = params.append('password', userToLogin.password);
- 
+
         return this.http.get<UserDisplay>(`${this.apiUrl}user/authenticate`, { params })
             .pipe(map((loggedUser: UserDisplay) => {
                 const isValidResponse = loggedUser && loggedUser.userId;
@@ -71,8 +72,41 @@ export class AuthService extends BaseService {
                 }
                 return !!isValidResponse;
             })
- 
+
 
             );
     }
+
+    public generateCode(email: string): Observable<string> {
+        let params = new HttpParams();
+        params = params.append('email', email);
+
+        return this.http.get<string>(`${this.apiUrl}user/generateCode`, { params })
+            .pipe(map((message: string) => {
+                return message;
+            })
+            );
+    }
+
+    public validateCode(email: string, code: number): Observable<string> {
+        let params = new HttpParams();
+        params = params.append('email', email);
+        params = params.append('codeNumber', code.toString());
+
+        return this.http.get<string>(`${this.apiUrl}user/ValidateCode`, { params })
+            .pipe(map((message: string) => {
+                return message;
+            })
+            );
+    }
+
+    public setPassword(model: UserChangePassword): Observable<string> {
+        return this.http.post<string>(`${this.apiUrl}user/setPassword`, model)
+            .pipe(map((message: string) => {
+                return message;
+            })
+            );
+    }
+
+
 }

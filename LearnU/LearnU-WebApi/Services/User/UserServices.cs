@@ -65,7 +65,7 @@ namespace LearnU_WebApi.Services.User
             {
                 username = username.ToLower();
                 query = query.Where(u => u.UserName.ToLower().Contains(username));
-            } 
+            }
 
             // Sorting logic
             if (nameof(UserDisplayDTO.FullName).ToLower() == sortField)
@@ -75,12 +75,12 @@ namespace LearnU_WebApi.Services.User
             else if (nameof(UserDisplayDTO.UserName).ToLower() == sortField)
             {
                 query = isAscending ? query.OrderBy(u => u.UserName) : query.OrderByDescending(u => u.UserName);
-            } 
+            }
 
             var totalUsers = await query.CountAsync();
             var data = await query
                 .Skip(skipNumber)
-                .Take(takeNumber) 
+                .Take(takeNumber)
                 .ToListAsync();
             return (totalUsers, data);
         }

@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace StoreU_WebApi.Model
 {
     public partial class CategoryCompany
-    {
-        public CategoryCompany()
-        {
-            Company = new HashSet<Company>();
-        }
+    { 
 
+        [Key]
         public Guid CategoryId { get; set; }
         public string CategoryName { get; set; }
 
-        public virtual ICollection<Company> Company { get; set; }
+        public virtual Company Company { get; set; }
+         
     }
 }

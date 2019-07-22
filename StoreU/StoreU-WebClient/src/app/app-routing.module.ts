@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: './register/register.module#RegisterModule'
+  },
+  {
+    path: 'forgot',
+    loadChildren: './forgot/forgot.module#ForgotModule'
   }
 
 ];

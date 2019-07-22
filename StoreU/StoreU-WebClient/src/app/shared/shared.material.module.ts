@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatFormFieldModule, MatSnackBarModule, matSnackBarAnimations, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatFormFieldModule, MatSnackBarModule, matSnackBarAnimations, MatInputModule,MatIconModule, MatSlideToggleModule} from '@angular/material';
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 
 @NgModule({
   declarations: [],
@@ -12,7 +13,10 @@ import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatFormFie
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatPasswordStrengthModule.forRoot(),
+    MatSlideToggleModule
   ],
   exports: [
     MatButtonModule, 
@@ -20,7 +24,10 @@ import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatFormFie
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+    MatPasswordStrengthModule,
+    MatSlideToggleModule
+
   ]
 })
 export class SharedMaterialModule { }

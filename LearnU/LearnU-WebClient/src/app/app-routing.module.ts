@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { LoaderComponent } from './loader/loader.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,14 @@ const routes: Routes = [
     path: 'logout',
     loadChildren: './logout/logout.module#LogoutModule'
   },
+  {
+    path: 'forgot',
+    loadChildren: './forgot/forgot.module#ForgotModule'
+  },
+  {
+    path: 'register',
+    loadChildren: './register/register.module#RegisterModule'
+  }
 
 ];
 

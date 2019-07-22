@@ -5,6 +5,7 @@ import { MatGridListModule, MatCardModule, MatTableModule, MatButtonModule, MatI
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { StatModule } from 'src/app/shared/modules/stat/stat.module';
+import { GlobalErrorHandler } from 'src/app/shared/helpers/global-error-handler';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -20,6 +21,7 @@ import { StatModule } from 'src/app/shared/modules/stat/stat.module';
     
     FlexLayoutModule.withConfig({addFlexToParent: false})
 
-  ]
+  ],
+  providers: [GlobalErrorHandler]
 })
 export class DashboardModule { }

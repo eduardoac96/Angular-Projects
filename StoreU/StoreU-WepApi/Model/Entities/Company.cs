@@ -23,9 +23,10 @@ namespace StoreU_WebApi.Model
         public Guid? CategoryId { get; set; }
         public string MainAddress { get; set; }
 
-        public virtual CategoryCompany Category { get; set; }
+        public virtual ICollection<CategoryCompany> CategoryCompany { get; set; }
         public virtual ICollection<CategoryProducts> CategoryProducts { get; set; }
         public virtual ICollection<CompanyProducts> CompanyProducts { get; set; }
         public virtual ICollection<UserCompany> UserCompany { get; set; }
+         
     }
 }

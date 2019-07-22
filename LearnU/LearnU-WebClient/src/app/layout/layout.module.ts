@@ -15,6 +15,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { GlobalErrorHandler } from '../shared/helpers/global-error-handler';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { TranslateModule } from '@ngx-translate/core';
         MatListModule,
         TranslateModule
     ],
-    declarations: [LayoutComponent, NavComponent, TopnavComponent, SidebarComponent]
+    declarations: [LayoutComponent, NavComponent, TopnavComponent, SidebarComponent],
+    providers: [GlobalErrorHandler]
 
 })
 export class LayoutModule { }

@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace StoreU_WebApi.Model
 {
-    public partial class BankId
+    public partial class Banks
     {
-        public BankId()
+        public Banks()
         {
             UserBank = new HashSet<UserBank>();
         }
 
-        public Guid BankId1 { get; set; }
+        [Key]
+        public Guid BankId { get; set; }
         public string BankName { get; set; }
 
         public virtual ICollection<UserBank> UserBank { get; set; }

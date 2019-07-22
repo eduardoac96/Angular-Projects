@@ -1,13 +1,13 @@
 import { BaseService } from './base.service';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, throwError } from 'rxjs';
 import { UserDisplay } from '../../models/user-display.model';
- import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { UserLogin } from '../../models/user-login.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 export class AuthService extends BaseService {
-
+    
     constructor(
         private http: HttpClient,
         private snackBar: MatSnackBar
@@ -57,8 +57,7 @@ export class AuthService extends BaseService {
         let params = new HttpParams();
         params = params.append('username', userToLogin.username);
         params = params.append('password', userToLogin.password);
-
-        debugger
+ 
         return this.http.get<UserDisplay>(`${this.apiUrl}user/authenticate`, { params })
             .pipe(map((loggedUser: UserDisplay) => {
                 const isValidResponse = loggedUser && loggedUser.userId;
@@ -70,7 +69,9 @@ export class AuthService extends BaseService {
                     });
                 }
                 return !!isValidResponse;
-            }));
-    }
+            })
+ 
 
+            );
+    }
 }

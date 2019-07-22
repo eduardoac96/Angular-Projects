@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
+﻿using System; 
 using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization; 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Logging; 
 using StoreU_DomainEntities;
 using StoreU_DomainEntities.Users;
 using StoreU_WebApi.Model;
@@ -47,15 +40,11 @@ namespace StoreU_WebApi.Controllers
                 userEntity.UserId = Guid.NewGuid(); 
                 userEntity.RegistryDate = DateTime.Now;
 
-                _repository.AddUser(userEntity, userDto.PasswordRaw);
-                if (!(await _repository.SaveAsync()))
-                {
-                    throw new Exception("Adding a user failed on save.");
-                }
-
+                await _repository.AddUser(userEntity, userDto.PasswordRaw);
                 //Returning the new resource/Dto
                 var userToReturnDto = _mapper.Map<UserDto>(userEntity);
-                var tokenResult = GenerateToken(userToReturnDto.UserId, userToReturnDto.RoleId.Value);
+                var tokenResult = _repository.GenerateToken(userToReturnDto.UserId, userToReturnDto.RoleId.Value, _configuration["AppSettings:Secret"]);
+
                 userToReturnDto.Token = tokenResult.Token;
                 userToReturnDto.TokenExpiration = tokenResult.TokenExpiration;
                 _logger.LogInformation($"A new user has been registered: Name = {userToReturnDto.FullName}, Username = {userToReturnDto.UserName}, Role = {userToReturnDto.RoleId}");
@@ -78,7 +67,7 @@ namespace StoreU_WebApi.Controllers
                 return NotFound(new ActionResponseDto("Invalid credentials"));
             }
 
-            var tokenResult = GenerateToken(userEntity.UserId, userEntity.RoleId.Value);
+            var tokenResult = _repository.GenerateToken(userEntity.UserId, userEntity.RoleId.Value, _configuration["AppSettings:Secret"]);
             var userToReturn = _mapper.Map<UserDto>(userEntity);
             userToReturn.Token = tokenResult.Token;
             userToReturn.TokenExpiration = tokenResult.TokenExpiration;
@@ -86,27 +75,59 @@ namespace StoreU_WebApi.Controllers
             return Ok(userToReturn);
         }
 
-        private (string Token, string TokenExpiration) GenerateToken(Guid userId, int role)
+        [AllowAnonymous]
+        [HttpGet("GenerateCode")]
+        public async Task<IActionResult> GenerateCode(string email)
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
-
-            var key = Encoding.ASCII.GetBytes(_configuration["AppSettings:Secret"]);
-
-            var expirationDate = DateTime.UtcNow.AddHours(1);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            try
             {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, userId.ToString()),
-                    new Claim(ClaimTypes.Role, role.ToString())
-                }),
-                Expires = expirationDate,
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return (tokenHandler.WriteToken(token), new DateTimeOffset(expirationDate, TimeSpan.FromMilliseconds(0)).ToString(Constants.Constants.DATE_TIME_WITH_TIMEZONE_FORMAT));
+                await _repository.GenerateCode(email);
+
+                string message = $"Código enviado al correo {email}";
+                _logger.LogInformation(message);
+                return Ok(message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ActionResponseDto(ex.Message, false));
+            }
         }
 
+        [AllowAnonymous]
+        [HttpGet("ValidateCode")]
+        public async Task<IActionResult> ValidateCode(string email, int codeNumber)
+        {
+            try
+            {
+                await _repository.ValidateCode(email, codeNumber);
+                string message = $"Código validado exitosamente {email}/{codeNumber}";
+                _logger.LogInformation(message);
+                return Ok(message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ActionResponseDto(ex.Message, false));
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpGet("SetPassword")]
+        public async Task<IActionResult> SetPassword(UserChangePasswordDto model)
+        {
+            try
+            {
+                await _repository.SetPassword(model);
+                string message = $"Password modificado exitosamente.";
+                _logger.LogInformation(message);
+                return Ok(message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ActionResponseDto(ex.Message, false));
+            }
+        }
+
+       
         [HttpGet("single", Name = "GetUser")]
         public async Task<IActionResult> GetUser(Guid userId)
         {
@@ -117,34 +138,6 @@ namespace StoreU_WebApi.Controllers
             var repoUser = await _repository.GetUser(userId);
             var dtoUser = _mapper.Map<UserDto>(repoUser);
             return Ok(dtoUser);
-        }
-
-        //[HttpGet]
-        //[Authorize(nameof(Constants.PolicyNames.MustBeAdministrator))]
-        //public async Task<IActionResult> GetUsers()
-        //{
-        //    var repoUsers = await _repository.GetUsers();
-        //    var dtoUsers = _mapper.Map<IEnumerable<UserDto>>(repoUsers);
-        //    return Ok(dtoUsers);
-        //}
-
-        //[HttpGet("paginated")]
-        //[Authorize(nameof(Constants.PolicyNames.MustBeAntiqueUser))]
-        //public async Task<IActionResult> GetUsersPaginated(string sortField, string sortDirection, int maxRecordsPerPage, int pageIndex, string id, string displayName, string username, string role)
-        //{
-        //    if (maxRecordsPerPage <= 0 || pageIndex < 0)
-        //    {
-        //        return BadRequest(new ActionResponseDto("Invalid parameters for paginated search"));
-        //    }
-        //    var paginatedResult = await _repository.GetUsersPaginated(sortField, sortDirection, maxRecordsPerPage, pageIndex, id, displayName, username, role);
-        //    return Ok(new PaginatedDto<UserDto>
-        //    {
-        //        TotalRecords = paginatedResult.TotalUsers,
-        //        FilteredRecords = _mapper.Map<IEnumerable<UserDto>>(paginatedResult.PaginatedUsers)
-        //    });
-        //}
-
-
-
+        }  
     }
 }

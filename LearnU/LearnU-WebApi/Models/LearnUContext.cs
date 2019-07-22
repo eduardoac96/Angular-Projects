@@ -6,9 +6,7 @@ namespace LearnU_WebApi.Models
 {
     public partial class LearnUContext : DbContext
     {
-        public LearnUContext()
-        {
-        }
+
 
         public LearnUContext(DbContextOptions<LearnUContext> options)
             : base(options)

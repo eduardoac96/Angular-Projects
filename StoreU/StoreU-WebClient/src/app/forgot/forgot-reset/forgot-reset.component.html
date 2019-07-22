@@ -1,0 +1,114 @@
+<!-- <mat-form-field floatPlaceholder="auto" style="width: 100%">
+    <input matInput #password
+           [type]="inputType"
+           required
+           placeholder="Password">
+    <mat-hint align="end" aria-live="polite">
+      {{password.value.length}} / 25
+    </mat-hint>
+  </mat-form-field>
+  <mat-password-strength #passwordComponent
+                                  [password]="password.value">
+  </mat-password-strength> -->
+
+<!-- <app-loader></app-loader> -->
+
+<div class="forgot-page">
+  <div class="content">
+    <form
+      #forgotForm="ngForm"
+      class="forgot-form"
+      fxFlex
+      (ngSubmit)="reset(forgotForm)"
+    >
+      <div class="text-center">
+        <h2 class="app-name">Store U</h2>
+      </div>
+      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+        <div fxFlexFill>
+
+          <label>Escribe tu nueva contraseña.</label>
+
+          <mat-form-field floatPlaceholder="auto" class="w-100">
+              <mat-pass-toggle-visibility #toggle matSuffix></mat-pass-toggle-visibility>
+
+            <input
+              matInput
+              #password
+              [type]="toggle.type"
+              required
+              placeholder="Nueva contraseña"
+            />
+            <mat-hint align="end" aria-live="polite">
+              {{ password.value.length }} / 25
+            </mat-hint>
+          </mat-form-field>
+          <mat-password-strength #passwordComponent [password]="password.value"  class="green">
+          </mat-password-strength>
+
+       
+        </div>
+      </div>
+
+      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+
+        <div fxFlexFill>
+          
+          <mat-form-field floatPlaceholder="auto" class="w-100">
+              <mat-pass-toggle-visibility #toggleConfirm matSuffix></mat-pass-toggle-visibility>
+
+            <input
+              matInput
+              #passwordConfirm
+              [type]="toggleConfirm.type"
+              required
+              placeholder="Confirmar contraseña"
+            />
+            <mat-hint align="end" aria-live="polite">
+              {{ passwordConfirm.value.length }} / 25
+            </mat-hint>
+          </mat-form-field>
+          <mat-password-strength #passwordConfirmComponent [password]="passwordConfirm.value">
+          </mat-password-strength>
+ 
+          <mat-error
+          *ngIf="password.value !== passwordConfirm.value">
+          Password is not the same
+        </mat-error>
+        </div>
+        <mat-slide-toggle #toggleDetails>Show Password Details</mat-slide-toggle>
+        <mat-password-strength-info
+        *ngIf="toggleDetails.checked"
+
+        lowerCaseCriteriaMsg="Al menos una letra minuscula"
+        upperCaseCriteriaMsg="Al menos una letra mayuscula"
+        digitsCriteriaMsg="Al menos un número"
+        specialCharsCriteriaMsg="Al menos un caracter especial"
+        minCharsCriteriaMsg="Al menos 8 caracteres"
+        [passwordComponent]="passwordComponent">
+      </mat-password-strength-info>
+      </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-100"
+            type="submit"
+            [disabled]="!forgotForm.valid"
+            [routerLink]="['/forgot/reset']"
+          >
+            Confirmar
+          </button>
+        </div>
+      </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill class="text-center forgot-password">
+          <a [routerLink]="['/forgot/code']">Regresar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

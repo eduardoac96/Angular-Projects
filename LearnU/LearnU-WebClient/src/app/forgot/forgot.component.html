@@ -1,0 +1,63 @@
+<div class="forgot-page">
+  <div class="content">
+    <form
+      #forgotForm="ngForm"
+      class="forgot-form"
+      fxFlex
+      (ngSubmit)="forgot(forgotForm)"
+    >
+      <div class="text-center">
+        <h2 class="app-name">LearnU</h2>
+      </div>
+      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input
+              matInput
+              placeholder="Please write your e-mail"
+              ngModel
+              name="username"
+              type="email"
+              required
+              maxlength="30"
+              #usernameCtrl="ngModel"
+            />
+            <mat-error *ngIf="usernameCtrl?.errors?.required"
+              >Required field</mat-error
+            >
+            <mat-error *ngIf="usernameCtrl?.errors?.maxlength"
+              >Exceeds the allowed number of characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-100"
+            type="submit"
+            [disabled]="!forgotForm.valid"
+          >
+            Send Email
+          </button>
+        </div>
+      </div>
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <a
+            mat-raised-button
+            color="default"
+            class="w-100"
+            type="submit"
+            [routerLink]="['/login']"
+          >
+            Back
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-Domain\obj\Debug\netcoreapp2.2\StoreU-DomainEntities.csprojAssemblyReference.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-Domain\obj\Debug\netcoreapp2.2\StoreU-DomainEntities.csproj.CoreCompileInputs.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-Domain\obj\Debug\netcoreapp2.2\StoreU-DomainEntities.AssemblyInfoInputs.cache
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-Domain\obj\Debug\netcoreapp2.2\StoreU-DomainEntities.AssemblyInfo.cs
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-Domain\bin\Debug\netcoreapp2.2\StoreU-DomainEntities.deps.json
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-Domain\bin\Debug\netcoreapp2.2\StoreU-DomainEntities.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-Domain\bin\Debug\netcoreapp2.2\StoreU-DomainEntities.pdb
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-Domain\obj\Debug\netcoreapp2.2\StoreU-DomainEntities.dll
+C:\Users\e.alvarado\source\repos\StoreU\StoreU-Domain\obj\Debug\netcoreapp2.2\StoreU-DomainEntities.pdb

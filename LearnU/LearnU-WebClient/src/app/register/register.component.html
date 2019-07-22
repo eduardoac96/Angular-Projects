@@ -1,51 +1,179 @@
-<p>register works!</p>
-<div class="row">
-    <div class="col-md-6 offset-md-3">
-      <form [formGroup]="registerForm">
-        <div class="form-group">
-          <mat-form-field class="form-mat-control">
-            <input matInput placeholder="First Name" formControlName="firstName">
-            <mat-error *ngIf="registerForm['controls'].firstName.errors?.required">Required field</mat-error>
-            <mat-error *ngIf="registerForm['controls'].firstName.errors?.maxlength">Exceeds the allowed number of
-              characters</mat-error>
+<div class="register-page">
+  <div class="content">
+    <form
+      #registerForm="ngForm"
+      class="register-form"
+      fxFlex
+      (ngSubmit)="register(registerForm)"
+    >
+      <div class="text-center">
+        <h2 class="app-name">LearnU</h2>
+      </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input
+              type="text"
+              matInput
+              placeholder="First Name"
+              ngModel
+              name="name"
+              required
+              maxlength="80"
+              #nameCtrl="ngModel"
+            />
+            <mat-error *ngIf="nameCtrl?.errors?.required"
+              >Required field</mat-error
+            >
+            <mat-error *ngIf="nameCtrl?.errors?.maxlength"
+              >Exceeds the allowed number of characters
+            </mat-error>
           </mat-form-field>
         </div>
-        <div class="form-group">
-          <mat-form-field class="form-mat-control">
-            <input matInput placeholder="Last Name" formControlName="lastName">
-            <mat-error *ngIf="registerForm['controls'].lastName.errors?.required">Required field</mat-error>
-            <mat-error *ngIf="registerForm['controls'].lastName.errors?.maxlength">Exceeds the allowed number of
-              characters</mat-error>
+      </div>
+
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+          <div fxFlexFill>
+            <mat-form-field class="w-100">
+              <input
+                type="text"
+                matInput
+                placeholder="Last Name"
+                ngModel
+                name="lastName"
+                required
+                maxlength="80"
+                #lastNameCtrl="ngModel"
+              />
+              <mat-error *ngIf="lastNameCtrl?.errors?.required"
+                >Required field</mat-error
+              >
+              <mat-error *ngIf="lastNameCtrl?.errors?.maxlength"
+                >Exceeds the allowed number of characters
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+            <div fxFlexFill>
+              <mat-form-field class="w-100">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Second Last Name"
+                  ngModel
+                  name="secondLastName" 
+                  maxlength="80"
+                  #secondLastNameCtrl="ngModel"
+                /> 
+                <mat-error *ngIf="secondLastNameCtrl?.errors?.maxlength"
+                  >Exceeds the allowed number of characters
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                <mat-form-field class="w-100">
+                  <input
+                    type="email"
+                    matInput
+                    placeholder="Email"
+                    ngModel
+                    name="userName"
+                    required
+                    maxlength="80"
+                    #userNameCtrl="ngModel"
+                  />
+                  <mat-error *ngIf="userNameCtrl?.errors?.required"
+                    >Required field</mat-error
+                  > 
+                </mat-form-field>
+              </div>
+            </div>
+
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                <mat-form-field class="w-100">
+          
+       
+                  <input matInput [matDatepicker]="birthDate" [min]="minDate" [max]="maxDate" placeholder="Birth Date" disabled #birthDateCtrl>
+                  <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+                  <mat-datepicker #birthDate disabled="false"></mat-datepicker>
+
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                  <mat-form-field>
+                      <mat-label>¿What do you want to do?</mat-label>
+                      <mat-select>
+                        <mat-option *ngFor="let role of rolesItem" [value]="role.roleId">
+                          {{role.description}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    
+              </div>
+            </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input
+              type="password"
+              matInput
+              placeholder="Password"
+              ngModel
+              name="passwordRaw"
+              required
+              maxlength="30"
+              #passwordCtrl="ngModel"
+            />
+            <mat-error *ngIf="passwordCtrl?.errors?.required"
+              >Required field</mat-error
+            >
+            <mat-error *ngIf="passwordCtrl?.errors?.maxlength"
+              >Exceeds the allowed number of characters
+            </mat-error>
           </mat-form-field>
         </div>
-        <div class="form-group">
-          <mat-form-field class="form-mat-control">
-            <input matInput placeholder="Username" formControlName="username">
-            <mat-error *ngIf="registerForm['controls'].username.errors?.required">Required field</mat-error>
-            <mat-error *ngIf="registerForm['controls'].username.errors?.maxlength">Exceeds the allowed number of
-              characters</mat-error>
-          </mat-form-field>
+      </div>
+
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-100"
+            type="submit"
+            [disabled]="!registerForm.valid"
+          >
+            Register Now
+          </button>
+
+          <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+            <div fxFlexFill>
+              <a
+                mat-raised-button
+                color="default"
+                class="w-100"
+                type="submit"
+                [routerLink]="['/login']"
+              >
+                Back
+            </a>
+            </div>
+          </div>
+
         </div>
-        <div class="form-group">
-          <mat-form-field class="form-mat-control">
-            <input type="password" matInput placeholder="Password" formControlName="password">
-            <mat-error *ngIf="registerForm['controls'].password.errors?.required">Required field</mat-error>
-            <mat-error *ngIf="registerForm['controls'].password.errors?.maxlength">Exceeds the allowed number of
-              characters</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field class="form-mat-control">
-            <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword">
-            <mat-error *ngIf="registerForm['controls'].confirmPassword.errors?.required">Required field</mat-error>
-          </mat-form-field>
-        </div>
-        <mat-error *ngIf="registerForm.errors && registerForm.errors['passwordMatch']">Passwords do not match</mat-error>
-        <div class="form-group">
-          <button type="button" mat-fab color="primary" (click)="save()" [disabled]='!registerForm.valid'>Save</button>
-          <button type="button" mat-fab color="secondary" (click)="back()">Back</button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
-  
+</div>
+ 

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace StoreU_WebApi.Model
 {
     public partial class UserProfile
     {
+        [Key]
         public Guid UserId { get; set; }
         public byte[] ProfilePhoto { get; set; }
         public string ProfileTitle { get; set; }

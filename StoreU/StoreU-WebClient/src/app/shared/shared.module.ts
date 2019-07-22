@@ -7,7 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AddAuthorizationHeaderInterceptor } from './helpers/add-authorization-header-interceptor';
+import { AddAcceptHeaderInterceptor } from './helpers/add-accept-header-interceptor';
+import { HandleHttpErrorInterceptor } from './helpers/handle-http-error-interceptor';
+import { GlobalErrorHandler } from './helpers/global-error-handler';
+
  @NgModule({
   declarations: [LoaderComponent],
   imports: [
@@ -19,6 +24,23 @@ import { HttpClientModule } from '@angular/common/http';
     FlexLayoutModule.withConfig({addFlexToParent: false})
   ],
   exports: [FormsModule],
-  providers: [AuthService ]
+  providers: [AuthService, GlobalErrorHandler,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddAuthorizationHeaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddAcceptHeaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HandleHttpErrorInterceptor,
+      multi: true
+    }
+  
+  ]
 })
 export class SharedModule { }

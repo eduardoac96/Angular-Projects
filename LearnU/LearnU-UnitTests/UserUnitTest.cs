@@ -35,11 +35,9 @@ namespace LearnU_UnitTests
         public void GetUsers_Test()
         {
             var response = _controller.GetUsers();
-            Assert.IsType<OkObjectResult>(response.Result);
-
+ 
             var result = (OkObjectResult)response.Result;
-            Assert.IsType<List<UserDisplayDTO>>(result.Value);
-
+ 
             var value = (List<UserDisplayDTO>)result.Value;
             Assert.True(value.Count > 0);
         }

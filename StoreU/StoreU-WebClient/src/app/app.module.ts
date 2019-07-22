@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BrowserModule } from '@angular/platform-browser';
     AppRoutingModule,
     SharedModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatPasswordStrengthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

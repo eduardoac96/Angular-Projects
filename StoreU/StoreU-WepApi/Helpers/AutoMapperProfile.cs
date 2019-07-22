@@ -9,7 +9,8 @@ namespace StoreU_WepApi.Helpers
 
         public AutoMapperProfile()
         {
-            base.CreateMap<UserDto, Users>().ReverseMap();
+            CreateMap<UserDto, Users>().ReverseMap();
+                
 
         } 
     }

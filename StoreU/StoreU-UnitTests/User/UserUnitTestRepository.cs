@@ -1,4 +1,5 @@
-﻿using StoreU_WebApi.Model;
+﻿using StoreU_DomainEntities.Users;
+using StoreU_WebApi.Model;
 using StoreU_WebApi.Services.Users;
 using System;
 using System.Collections.Generic;
@@ -37,8 +38,13 @@ namespace StoreU_UnitTests.User
                 RegistryDate = DateTime.Now
             });
         }
+ 
+        public Task GenerateCode(string email)
+        {
+            throw new NotImplementedException();
+        }
 
-        public void AddUser(Users userToAdd, string password)
+        public (string Token, string TokenExpiration) GenerateToken(Guid userId, int role, string appSecret)
         {
             throw new NotImplementedException();
         }
@@ -68,9 +74,25 @@ namespace StoreU_UnitTests.User
             throw new NotImplementedException();
         }
 
+        public Task SetPassword(UserChangePasswordDto userChangePassword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ValidateCode(string email, int codeNumber)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Users> VerifyCredentials(string username, string password)
         {
             throw new NotImplementedException();
         }
+
+        Task IUsersRepository.AddUser(Users userToAdd, string password)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

@@ -10,7 +10,7 @@ namespace StoreU_WebApi.Model
         public string CardNumber { get; set; }
         public string CardExpiration { get; set; }
 
-        public virtual BankId Bank { get; set; }
+        public virtual Banks Bank { get; set; }
         public virtual Users User { get; set; }
     }
 }

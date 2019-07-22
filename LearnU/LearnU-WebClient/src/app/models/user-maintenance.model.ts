@@ -1,7 +1,7 @@
 export class UserMaintenance {
-  firstName: string;
+  name: string;
   lastName: string;
   username: string;
-  password: string;
+  passwordRaw: string;
   dataType: string;
 }
