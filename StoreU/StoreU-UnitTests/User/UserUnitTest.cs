@@ -69,7 +69,7 @@ namespace StoreU_UnitTests
                     UserId = Guid.NewGuid(),
                     FirstName = "Eduardo",
                     LastName = "Alvarado",
-                    UserName = "Cortes",
+                    UserName = "eduardo96_@live.com",
                     RoleId = 90,
                     PasswordRaw = "Eduardo0$",
                     Password= password.PasswordSalt,

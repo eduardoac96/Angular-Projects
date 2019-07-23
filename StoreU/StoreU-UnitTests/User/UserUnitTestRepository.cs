@@ -1,4 +1,5 @@
-﻿using StoreU_DomainEntities.Users;
+﻿using StoreU_Domain.Users;
+using StoreU_DomainEntities.Users;
 using StoreU_WebApi.Model;
 using StoreU_WebApi.Services.Users;
 using System;
@@ -94,5 +95,9 @@ namespace StoreU_UnitTests.User
             throw new NotImplementedException();
         }
 
+        Task<UserResponseEmailDto> IUsersRepository.GenerateCode(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

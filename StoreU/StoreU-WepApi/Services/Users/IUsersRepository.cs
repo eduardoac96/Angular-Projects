@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic; 
 using System.Threading.Tasks;
+using StoreU_Domain.Users;
 using StoreU_DomainEntities.Users;
 
 namespace StoreU_WebApi.Services.Users
@@ -19,7 +20,7 @@ namespace StoreU_WebApi.Services.Users
         Task<Model.Users> GetUser(Guid userId);
         Task<Model.Users> VerifyCredentials(string username, string password);
 
-        Task GenerateCode(string email);
+        Task<UserResponseEmailDto> GenerateCode(string email);
 
         Task ValidateCode(string email, int codeNumber);
 

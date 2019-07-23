@@ -12,9 +12,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using StoreU_Domain.Users;
 using StoreU_DomainEntities.Users;
 using StoreU_WebApi.Helpers;
 using StoreU_WebApi.Model;
+using StoreU_WepApi.Helpers;
 using StoreU_WepApi.Model.Entities;
 
 namespace StoreU_WebApi.Services.Users
@@ -35,7 +37,7 @@ namespace StoreU_WebApi.Services.Users
             userToAdd.PasswordHash = passwordResult.PasswordHash;
             userToAdd.Password = passwordResult.PasswordSalt;
 
-            var existingUser = _context.Users.SingleOrDefault(x => x.UserName.Trim().ToLower() == userToAdd.UserName.Trim().ToLower());
+            var existingUser = await _context.Users.SingleOrDefaultAsync(x => x.UserName.Trim().ToLower() == userToAdd.UserName.Trim().ToLower());
 
             if (existingUser != null)
                 throw new Exception($"User {userToAdd.UserName} already exists");
@@ -123,7 +125,7 @@ namespace StoreU_WebApi.Services.Users
             return user;
         }
 
-        public async Task GenerateCode(string email)
+        public async Task<UserResponseEmailDto> GenerateCode(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
                 throw new Exception("Email no puede estar vacio");
@@ -133,25 +135,35 @@ namespace StoreU_WebApi.Services.Users
             if (!emailAddressAttribute.IsValid(email))
                 throw new Exception("Formato de email invalido");
 
-            var user = _context.Users.SingleOrDefault(x => x.UserName == email);
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == email);
 
             if(user == null)
                 throw new Exception("Email no existe");
 
             int activationCode = calculateActivationCode();
-             
+
+            string tokenUser = EncryptionHelper.Encrypt(user.UserId.ToString(), "pkcs12-DEF");
+
             _context.UserVerificationCode.Add(new UserVerificationCode
             {
                 VerificationId = new Guid(),
                 UserId = user.UserId,
                 RegistryDate = DateTime.Now,
                 ExpirationTime = DateTime.Now.AddHours(2),
-                SecurityCode = activationCode,
+                SecurityCode = activationCode, 
             });
 
             await _context.SaveChangesAsync();
 
-            sendEmailGenerationCode(email,activationCode);
+            sendEmailGenerationCode(email,tokenUser);
+
+            return new UserResponseEmailDto
+            {
+                UserId = user.UserId,
+                Email = user.UserName,
+                VerificationCode = activationCode,
+                TokenUser = tokenUser
+            };
         }
 
         //Tuple<string, string> GenerateToken(Guid userId, int role, string appSecret);
@@ -193,7 +205,7 @@ namespace StoreU_WebApi.Services.Users
             return randNum;
         }
 
-        private void sendEmailGenerationCode(string email, int randNum)
+        private void sendEmailGenerationCode(string email, string tokenUser)
         {
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
@@ -201,7 +213,7 @@ namespace StoreU_WebApi.Services.Users
             message.To.Add(new MailAddress(email));
             message.Subject = "Store U - Resetear Contraseña";
             message.IsBodyHtml = true; //to make message body as html  
-            message.Body = generateTemplate(email,randNum);
+            message.Body = generateTemplate(email, tokenUser);
             smtp.Port = 587;
             smtp.Host = "smtp.live.com"; //for gmail host  
             smtp.EnableSsl = true;
@@ -229,22 +241,26 @@ namespace StoreU_WebApi.Services.Users
             if (!emailAddressAttribute.IsValid(email))
                 throw new Exception("Formato de email invalido");
 
-            var user = _context.Users.SingleOrDefault(x => x.UserName == email);
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == email);
 
             if (user == null)
                 throw new Exception("Email no existe");
              
-            var userCode = _context.UserVerificationCode.OrderByDescending(p=> p.RegistryDate).SingleOrDefault(x => x.UserId == user.UserId);
+            var userCode = await _context.UserVerificationCode.OrderByDescending(p=> p.RegistryDate)
+                                .FirstOrDefaultAsync(x => x.UserId == user.UserId);
 
 
             if (userCode == null)
                 throw new Exception("No existe código de validación");
 
 
-            if (DateTime.Now < userCode.ExpirationTime)
+            if (DateTime.Now > userCode.ExpirationTime)
                 throw new Exception("Código de validación ya expirado");
 
-            if(userCode.IsUsed)
+            if(userCode.SecurityCode != codeNumber)
+                throw new Exception("Código de validación incorrecto.");
+
+            if (userCode.IsUsed)
                 throw new Exception("Código de validación ya utilizado previamente");
 
 
@@ -275,18 +291,22 @@ namespace StoreU_WebApi.Services.Users
 
         }
 
-        private string generateTemplate(string name, int codeNumber)
+        private string generateTemplate(string name, string tokenUser)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
-            var htmlStream = assembly.GetManifestResourceStream("~/Assets/EmailTemplates/ForgotPassword/GenerationCode.html");
+            //var htmlStream = assembly.GetManifestResourceStream("~/Assets/EmailTemplates/ForgotPassword/GenerationCode.html");
+
+            var htmlStream = Path.GetFullPath("~/Assets/EmailTemplates/ForgotPassword/GenerationCode.html").Replace("~\\", "");
+
 
             // Perform replacements on the HTML file (if you're using it as a template).
             var reader = new StreamReader(htmlStream);
+             
             var body = reader
                 .ReadToEnd()
-                .Replace("%{0}%", name)
-                .Replace("%{1}%", codeNumber.ToString()); // and so on...
+                .Replace("{0}", name)
+                .Replace("{1}", "http://localhost:4200/forgot/reset/" + tokenUser); // and so on...
 
             return body;
         }

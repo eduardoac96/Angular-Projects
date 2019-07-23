@@ -4,73 +4,29 @@
 <div class="forgot-page">
  
         <div class="content">
-          <form
-            #forgotForm="ngForm"
-            class="forgot-form"
-            fxFlex
-            (ngSubmit)="code(forgotForm)"
-          >
+  
             <div class="text-center">
               <h2 class="app-name">Store U</h2>
-            </div>
-            <div fxFlex fxlayout="row" fxlayout.lt-md="column">
-              <div fxFlexFill>
-    
-                <label>Escribe el código de verificación.</label>
-              <input type="hidden" name="email"/>
-                <mat-form-field class="w-100">
-                  <input
-                    matInput
-                    placeholder="Código de verificación."
-                    ngModel
-                    name="code"
-                    type="number"
-                    number
-                    required
-                    autocomplete="off"
-                    maxlength="5"
-                    #usernameCtrl="ngModel"
-                  />
-                  <mat-error *ngIf="usernameCtrl?.errors?.required"
-                    >Campo requerido</mat-error
-                  >
-      
-                  <mat-error  *ngIf="usernameCtrl?.errors?.email" >
-                      Correo debe de tener un formato valido. 
-                  </mat-error >
-      
-                  <mat-error *ngIf="usernameCtrl?.errors?.maxlength"
-                    >Excede el número de caracteres.
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
+            </div> 
       
             
             <div fxFlex fxLayout="row" fxLayout.lt-md="column">
               <div fxFlexFill>
-                <button
+                <a
                   mat-raised-button
                   color="primary"
                   class="w-100"
-                  type="button"
-                  [disabled]="!forgotForm.valid"
-                  [routerLink]="['/forgot/reset']"
+                  type="click" 
+                  [routerLink]="['/login']"
                 >
-                  Confirmar
-                </button>
+                  Regresar a Login
+                </a>
               </div>
             </div>
-      
-            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
-              <div fxFlexFill class="text-center forgot-password">
-                <a [routerLink]="['/forgot']">Regresar</a>
-              </div>
-            </div>
+       
      
       
-           
-          </form>
+            
         </div>
        
       </div>

@@ -16,7 +16,7 @@ const routes: Routes = [
         component: ForgotCodeComponent
     },
     {
-        path: 'reset',
+        path: 'reset/:id',
         component: ForgotResetComponent
     }
 

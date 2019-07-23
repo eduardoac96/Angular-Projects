@@ -20,6 +20,7 @@ namespace StoreU_WebApi.Helpers
             }
         }
 
+         
         public static bool VerifyPasswordHash(string candidatePassword, byte[] storedHash, byte[] storedSalt)
         {
             if (candidatePassword == null) throw new ArgumentNullException("password");

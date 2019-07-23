@@ -19,7 +19,10 @@ export class ForgotResetComponent implements OnInit {
 
   private forgotSubscription: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) { }
+
+  constructor(private authService: AuthService, private router: Router) {
+ 
+   }
 
   ngOnInit() {
   }
@@ -34,13 +37,14 @@ export class ForgotResetComponent implements OnInit {
     console.log('password strength = ', strength);
   }
 
-  public reset(forgotForm: NgForm): void{
-    if(!forgotForm.valid){
+  public reset(confirmPasswordForm: NgForm): void{
+    
+    if(!confirmPasswordForm.valid){
       return;
     }
 
-    const model: UserChangePassword  = automapper.map('ForgotForm', 'UserChangePassword', forgotForm.value);
-
+    const model: UserChangePassword  = automapper.map('confirmPasswordForm', 'UserChangePassword', confirmPasswordForm.value);
+    debugger
     this.forgotSubscription = this.authService.setPassword(model).subscribe(response => {
         if(response){
           this.router.navigate(['/login']);

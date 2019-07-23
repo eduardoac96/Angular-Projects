@@ -81,11 +81,11 @@ namespace StoreU_WebApi.Controllers
         {
             try
             {
-                await _repository.GenerateCode(email);
+               var userResponse = await _repository.GenerateCode(email);
 
-                string message = $"Código enviado al correo {email}";
+                string message = $"Código enviado al correo {userResponse.Email}";
                 _logger.LogInformation(message);
-                return Ok(message);
+                return Ok(userResponse);
             }
             catch (Exception ex)
             {
@@ -111,8 +111,8 @@ namespace StoreU_WebApi.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("SetPassword")]
-        public async Task<IActionResult> SetPassword(UserChangePasswordDto model)
+        [HttpPost("SetPassword")]
+        public async Task<IActionResult> SetPassword([FromBody] UserChangePasswordDto model)
         {
             try
             {

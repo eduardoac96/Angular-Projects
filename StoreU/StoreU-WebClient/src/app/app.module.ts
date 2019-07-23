@@ -26,6 +26,8 @@ export class AppModule {
   constructor() {
     automapper.createMap('registerForm', 'UserMaintenance');
     automapper.createMap('LoginForm', 'UserLogin');
+
+    automapper.createMap('confirmPasswordForm', 'UserChangePassword');
   }
 
 }

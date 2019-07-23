@@ -101,7 +101,10 @@ export class AuthService extends BaseService {
     }
 
     public setPassword(model: UserChangePassword): Observable<string> {
-        return this.http.post<string>(`${this.apiUrl}user/setPassword`, model)
+
+        console.log(model.passwordRaw);
+
+        return this.http.post(`${this.apiUrl}user/setPassword`, model)
             .pipe(map((message: string) => {
                 return message;
             })

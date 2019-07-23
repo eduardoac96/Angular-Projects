@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,12 +13,18 @@ import { Router } from '@angular/router';
 export class ForgotCodeComponent implements OnInit {
 
   private validateCodeSubscription: Subscription;
+  private UserToken: string;
+  
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {
+    
+  this.userToken = this.activatedRoute.snapshot.paramMap.get("userToken")
+
+   }
 
   ngOnInit() {
   }
-
+userToken
   ngOnDestroy() {
     if (this.validateCodeSubscription) {
       this.validateCodeSubscription.unsubscribe();
@@ -31,7 +37,9 @@ export class ForgotCodeComponent implements OnInit {
     }
 
     let codeNumber: number = codeForm.value.code;
-    let email: string = codeForm.value.email;
+    // let email: string = codeForm.value.email;
+
+    let email: string = 'eduardo96_@live.com';
 
     this.validateCodeSubscription = this.authService.validateCode(email, codeNumber).subscribe(response => {
       if (response) {

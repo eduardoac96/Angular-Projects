@@ -33,7 +33,12 @@ export class ForgotComponent implements OnInit {
 
     this.forgotSubscription = this.authService.generateCode(email).subscribe(response => {
       if (response) {
-        this.router.navigate(['/forgot/code']);
+
+        //response.Email
+        //response.UserId
+        //response.VerificationCode
+
+        this.router.navigate(['/forgot/code'],  { state: { response } });
       }
     });
 
