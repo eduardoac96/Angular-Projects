@@ -37,9 +37,7 @@ namespace StoreU_WebApi.Controllers
             try
             {
                 var userEntity = _mapper.Map<Users>(userDto);
-                userEntity.UserId = Guid.NewGuid(); 
-                userEntity.RegistryDate = DateTime.Now;
-
+                
                 await _repository.AddUser(userEntity, userDto.PasswordRaw);
                 //Returning the new resource/Dto
                 var userToReturnDto = _mapper.Map<UserDto>(userEntity);
