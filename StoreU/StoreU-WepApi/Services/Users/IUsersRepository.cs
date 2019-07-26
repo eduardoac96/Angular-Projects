@@ -8,7 +8,7 @@ namespace StoreU_WebApi.Services.Users
 {
     public interface IUsersRepository
     {
-        bool Save();
+        //bool Save();
 
         Task<bool> SaveAsync();
 
@@ -22,7 +22,7 @@ namespace StoreU_WebApi.Services.Users
 
         Task<UserResponseEmailDto> GenerateCode(string email);
 
-        Task ValidateCode(string email, int codeNumber);
+        //Task ValidateCode(string email, int codeNumber);
 
         (string Token, string TokenExpiration) GenerateToken(Guid userId, int role, string appSecret);
 

@@ -9,8 +9,7 @@ export class GlobalErrorHandler extends ErrorHandler {
   }
 
   handleError(error: any) { 
-    console.log(error);
-    this.snackBar.open('An unexpected error has occurred' + error.Message, 'OK', {
+     this.snackBar.open('An unexpected error has occurred' + error.Message, 'OK', {
       duration: 4000,
     });
   }

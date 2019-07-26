@@ -6,6 +6,8 @@ import { LoaderComponent } from '../loader/loader.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddAuthorizationHeaderInterceptor } from './helpers/add-authorization-header-interceptor';
@@ -21,9 +23,10 @@ import { GlobalErrorHandler } from './helpers/global-error-handler';
     SharedMaterialModule, 
     HttpClientModule,
     FormsModule,
-    FlexLayoutModule.withConfig({addFlexToParent: false})
+    FlexLayoutModule.withConfig({addFlexToParent: false}),
+    SweetAlert2Module
   ],
-  exports: [FormsModule],
+  exports: [FormsModule, SweetAlert2Module],
   providers: [AuthService, GlobalErrorHandler,
     {
       provide: HTTP_INTERCEPTORS,

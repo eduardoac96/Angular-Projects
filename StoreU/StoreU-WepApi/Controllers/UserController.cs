@@ -92,23 +92,7 @@ namespace StoreU_WebApi.Controllers
                 return StatusCode(500, new ActionResponseDto(ex.Message, false));
             }
         }
-
-        [AllowAnonymous]
-        [HttpGet("ValidateCode")]
-        public async Task<IActionResult> ValidateCode(string email, int codeNumber)
-        {
-            try
-            {
-                await _repository.ValidateCode(email, codeNumber);
-                string message = $"Código validado exitosamente {email}/{codeNumber}";
-                _logger.LogInformation(message);
-                return Ok(message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new ActionResponseDto(ex.Message, false));
-            }
-        }
+         
 
         [AllowAnonymous]
         [HttpPost("SetPassword")]

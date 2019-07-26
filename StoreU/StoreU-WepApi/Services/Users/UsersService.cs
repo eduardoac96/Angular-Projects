@@ -16,8 +16,10 @@ using StoreU_Domain.Users;
 using StoreU_DomainEntities.Users;
 using StoreU_WebApi.Helpers;
 using StoreU_WebApi.Model;
+using StoreU_WebApi.Constants;
 using StoreU_WepApi.Helpers;
 using StoreU_WepApi.Model.Entities;
+using System.Web;
 
 namespace StoreU_WebApi.Services.Users
 {
@@ -32,6 +34,9 @@ namespace StoreU_WebApi.Services.Users
 
         public async Task AddUser(Model.Users userToAdd, string password)
         {
+            userToAdd.UserId = Guid.NewGuid();
+            userToAdd.RegistryDate = DateTime.Now;
+             
             var passwordResult = password.CreatePasswordHash();
 
             userToAdd.PasswordHash = passwordResult.PasswordHash;
@@ -140,34 +145,23 @@ namespace StoreU_WebApi.Services.Users
             if(user == null)
                 throw new Exception("Email no existe");
 
-            int activationCode = calculateActivationCode();
+            //int activationCode = calculateActivationCode();-
 
-            string tokenUser = EncryptionHelper.Encrypt(user.UserId.ToString(), "pkcs12-DEF");
+            string tokenUser = EncryptionHelper.Encrypt(user.UserId.ToString(), Constants.Constants.TOKEN_KEY);
 
-            _context.UserVerificationCode.Add(new UserVerificationCode
-            {
-                VerificationId = new Guid(),
-                UserId = user.UserId,
-                RegistryDate = DateTime.Now,
-                ExpirationTime = DateTime.Now.AddHours(2),
-                SecurityCode = activationCode, 
-            });
-
-            await _context.SaveChangesAsync();
+            tokenUser = HttpUtility.UrlEncode(tokenUser); 
 
             sendEmailGenerationCode(email,tokenUser);
 
             return new UserResponseEmailDto
             {
                 UserId = user.UserId,
-                Email = user.UserName,
-                VerificationCode = activationCode,
+                Email = user.UserName, 
                 TokenUser = tokenUser
             };
         }
-
-        //Tuple<string, string> GenerateToken(Guid userId, int role, string appSecret);
-
+         
+         
             /// <summary>
             /// Returns a Tuple: string Token, string TokenExpiration
             /// </summary>
@@ -196,20 +190,12 @@ namespace StoreU_WebApi.Services.Users
             return (tokenHandler.WriteToken(token), new DateTimeOffset(expirationDate, TimeSpan.FromMilliseconds(0)).ToString(Constants.Constants.DATE_TIME_WITH_TIMEZONE_FORMAT));
         }
 
-
-        private int calculateActivationCode()
-        {
-            Random r = new Random();
-            int randNum = r.Next(1000000);
-
-            return randNum;
-        }
-
+         
         private void sendEmailGenerationCode(string email, string tokenUser)
         {
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
-            message.From = new MailAddress("eduardo96_@live.com");
+            message.From = new MailAddress(Constants.Constants.EMAILTO);
             message.To.Add(new MailAddress(email));
             message.Subject = "Store U - Resetear Contraseña";
             message.IsBodyHtml = true; //to make message body as html  
@@ -218,64 +204,27 @@ namespace StoreU_WebApi.Services.Users
             smtp.Host = "smtp.live.com"; //for gmail host  
             smtp.EnableSsl = true;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("eduardo96_@live.com","28cadames2013");
+            smtp.Credentials = new NetworkCredential(Constants.Constants.EMAILTO, Constants.Constants.EMAILPWD);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.SendAsync(message,null);
         }
-
-
-        public async Task ValidateCode(string email, int codeNumber)
-        {
-            if (string.IsNullOrWhiteSpace(email))
-                throw new Exception("Email no puede estar vacio");
-
-            if(codeNumber == 0)
-                throw new Exception("Código no puede estar vacio");
-
-            if (codeNumber.ToString().Length < 6)
-                throw new Exception("Código debe de ser de 6 caracteres");
-
-
-            var emailAddressAttribute = new EmailAddressAttribute();
-
-            if (!emailAddressAttribute.IsValid(email))
-                throw new Exception("Formato de email invalido");
-
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == email);
-
-            if (user == null)
-                throw new Exception("Email no existe");
-             
-            var userCode = await _context.UserVerificationCode.OrderByDescending(p=> p.RegistryDate)
-                                .FirstOrDefaultAsync(x => x.UserId == user.UserId);
-
-
-            if (userCode == null)
-                throw new Exception("No existe código de validación");
-
-
-            if (DateTime.Now > userCode.ExpirationTime)
-                throw new Exception("Código de validación ya expirado");
-
-            if(userCode.SecurityCode != codeNumber)
-                throw new Exception("Código de validación incorrecto.");
-
-            if (userCode.IsUsed)
-                throw new Exception("Código de validación ya utilizado previamente");
-
-
-            userCode.IsUsed = true;
-            _context.Update(userCode);
-            await SaveAsync();
-
-        }
-         
+          
         public async Task SetPassword(UserChangePasswordDto userChangePassword)
         {
             if (userChangePassword.PasswordRaw != userChangePassword.PasswordConfirmation)
                 throw new Exception("Contraseña y confirmación deben de coincidir");
+             
+            //string tokenUser = HttpUtility.UrlDecode(userChangePassword.UserToken);
 
-            var user = _context.Users.SingleOrDefault(x => x.UserId == userChangePassword.UserId);
+            var decryptedToken = EncryptionHelper.Decrypt(userChangePassword.UserToken, Constants.Constants.TOKEN_KEY);
+             
+            bool isValidUserGuid = Guid.TryParse(decryptedToken, out Guid userGuid);
+
+            if (!isValidUserGuid)
+                throw new Exception("Token incorrecto");
+
+
+            var user = _context.Users.SingleOrDefault(x => x.UserId == userGuid);
 
             if (user == null)
                 throw new Exception("Usuario no existe");
@@ -294,11 +243,8 @@ namespace StoreU_WebApi.Services.Users
         private string generateTemplate(string name, string tokenUser)
         {
             var assembly = Assembly.GetExecutingAssembly();
-
-            //var htmlStream = assembly.GetManifestResourceStream("~/Assets/EmailTemplates/ForgotPassword/GenerationCode.html");
-
+             
             var htmlStream = Path.GetFullPath("~/Assets/EmailTemplates/ForgotPassword/GenerationCode.html").Replace("~\\", "");
-
 
             // Perform replacements on the HTML file (if you're using it as a template).
             var reader = new StreamReader(htmlStream);
@@ -306,7 +252,7 @@ namespace StoreU_WebApi.Services.Users
             var body = reader
                 .ReadToEnd()
                 .Replace("{0}", name)
-                .Replace("{1}", "http://localhost:4200/forgot/reset/" + tokenUser); // and so on...
+                .Replace("{1}", $"{Constants.Constants.FORGOTRESETURL}{tokenUser}"); // and so on...
 
             return body;
         }

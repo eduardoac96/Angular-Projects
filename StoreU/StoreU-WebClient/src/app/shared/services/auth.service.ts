@@ -87,23 +87,20 @@ export class AuthService extends BaseService {
             })
             );
     }
-
-    public validateCode(email: string, code: number): Observable<string> {
-        let params = new HttpParams();
-        params = params.append('email', email);
-        params = params.append('codeNumber', code.toString());
-
-        return this.http.get<string>(`${this.apiUrl}user/ValidateCode`, { params })
-            .pipe(map((message: string) => {
-                return message;
-            })
-            );
-    }
-
+  
     public setPassword(model: UserChangePassword): Observable<string> {
+ 
+        if(model.userToken == undefined || model.userToken == null || model.userToken === '')
+        {
+            this.snackBar.open('The user token is invalid', 'OK', {
+                duration: 4000,
+            });
 
-        console.log(model.passwordRaw);
+            return;
+        }
 
+
+ 
         return this.http.post(`${this.apiUrl}user/setPassword`, model)
             .pipe(map((message: string) => {
                 return message;

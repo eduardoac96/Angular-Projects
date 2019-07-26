@@ -50,9 +50,21 @@ namespace StoreU_UnitTests
         //    Assert.True(value.Count > 0);
         //}
 
-        [Fact]
-        public void GeneratePassword()
+     
+            [Fact]
+        public void Authenticate_Test()
         {
+            try
+            {
+
+                var response = _userController.Authenticate("eduardo96_@live.com", "Sandoval28$").Result;
+
+                Assert.True(true, "Success");
+            }
+            catch (Exception ex)
+            {
+                Assert.True(false, ex.Message);
+            }
         }
 
         [Fact]
@@ -76,12 +88,12 @@ namespace StoreU_UnitTests
                     RegistryDate = DateTime.Now,
                    
                 }).Result;
+                Assert.True(true, "Success");
 
             }
             catch (Exception ex)
-            {
-
-                //Assert.Throws<Exception>(ex);
+            { 
+                Assert.True(false, ex.Message);
             }
 
 

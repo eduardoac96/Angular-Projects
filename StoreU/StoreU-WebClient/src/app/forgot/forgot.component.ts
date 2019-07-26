@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 import { NgForm } from '@angular/forms';
+import swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-forgot',
@@ -33,12 +35,13 @@ export class ForgotComponent implements OnInit {
 
     this.forgotSubscription = this.authService.generateCode(email).subscribe(response => {
       if (response) {
-
-        //response.Email
-        //response.UserId
-        //response.VerificationCode
-
-        this.router.navigate(['/forgot/code'],  { state: { response } });
+ 
+        swal.fire("Message",`Favor de revisar las instrucciones enviadas al correo  ${email}`, "success").then(() => {
+          debugger    
+          
+          this.router.navigate(['/login'],  { state: { response } });
+        });
+ 
       }
     });
 

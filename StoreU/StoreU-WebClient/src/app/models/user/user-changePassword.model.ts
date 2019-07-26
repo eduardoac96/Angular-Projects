@@ -1,5 +1,5 @@
 export class UserChangePassword{
-    userId: string;
+    userToken: string;
     passwordRaw: string;
     passwordConfirmation: string;
 }

@@ -17,8 +17,7 @@ export class HandleHttpErrorInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        debugger
-        return next.handle(request).pipe(catchError((error: HttpErrorResponse) => {
+         return next.handle(request).pipe(catchError((error: HttpErrorResponse) => {
             if (error && error.error && error.error.hasOwnProperty("friendlyErrorMessage")) {
                 this.globalErrorHandler.handleFriendlyError(error.error);
             } else if (error && error.error) {
