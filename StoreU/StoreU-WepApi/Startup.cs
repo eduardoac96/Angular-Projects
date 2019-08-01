@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using StoreU_WebApi.Model;
 using StoreU_WebApi.Services.Users;
+using StoreU_WepApi.Services.Register;
 
 namespace StoreU_WebApi
 {
@@ -75,7 +76,7 @@ namespace StoreU_WebApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddScoped<IUsersRepository, UsersService>();
-
+            services.AddScoped<IRegisterRepository, RegisterService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -94,7 +95,6 @@ namespace StoreU_WebApi
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthentication();
-
             app.UseHttpsRedirection();
             app.UseMvc();
         }

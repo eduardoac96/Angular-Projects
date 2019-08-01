@@ -1,1 +1,74 @@
-<p>register works!</p>
+<!-- <app-loader></app-loader> --> 
+<div class="register-page">
+ 
+    <div class="content">
+      <form
+        #registerForm="ngForm"
+        class="register-form"
+        fxFlex
+        (ngSubmit)="sendEmail(registerForm)"
+      >
+        <div class="text-center">
+          <h2 class="app-name">Store U</h2>
+        </div>
+        <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+          <div fxFlexFill>
+
+            <label>Escribe tu correo electronico, y te enviaremos un código de verificación.</label>
+
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Correo electronico."
+                ngModel
+                name="username"
+                type="email"
+                email
+                required
+                autocomplete="off"
+                maxlength="30"
+                #usernameCtrl="ngModel"
+              />
+              <mat-error *ngIf="usernameCtrl?.errors?.required"
+                >Campo requerido</mat-error
+              >
+  
+              <mat-error  *ngIf="usernameCtrl?.errors?.email" >
+                  Correo debe de tener un formato valido. 
+              </mat-error >
+  
+              <mat-error *ngIf="usernameCtrl?.errors?.maxlength"
+                >Excede el número de caracteres.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+  
+        
+        <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+          <div fxFlexFill>
+            <button
+              mat-raised-button
+              color="primary"
+              class="w-100"
+              type="submit"
+              [disabled]="!forgotForm.valid" 
+            >
+              Enviar código
+          </button>
+          </div>
+        </div>
+  
+        <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+          <div fxFlexFill class="text-center forgot-password">
+            <a [routerLink]="['/login']">Regresar</a> 
+
+          </div>
+        </div>
+  
+       
+      </form>
+    </div>
+   
+  </div>
+  

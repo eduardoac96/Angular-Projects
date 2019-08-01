@@ -8,4 +8,3 @@ export class UserDisplay {
     creationDate: string;
     antiqueSince: string;
   }
-  

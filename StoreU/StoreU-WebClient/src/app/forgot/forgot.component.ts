@@ -27,6 +27,9 @@ export class ForgotComponent implements OnInit {
   }
 
   public sendEmail(forgotForm: NgForm){
+
+    debugger
+
       if(!forgotForm.valid){
         return;
       }

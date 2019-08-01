@@ -104,11 +104,7 @@ namespace StoreU_WebApi.Services.Users
             return (totalUsers, data);
         }
 
-        public bool Save()
-        {
-            return _context.SaveChanges() >= 0;
-        }
-
+       
         public async Task<bool> SaveAsync()
         {
             return (await _context.SaveChangesAsync()) >= 0;
@@ -235,9 +231,7 @@ namespace StoreU_WebApi.Services.Users
             user.Password = passwordResult.PasswordSalt;
 
             _context.Users.Update(user);
-
             await _context.SaveChangesAsync();
-
         }
 
         private string generateTemplate(string name, string tokenUser)
