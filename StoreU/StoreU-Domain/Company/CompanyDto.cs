@@ -11,10 +11,16 @@ namespace StoreU_DomainEntities.Company
         public byte[] CompanyLogo { get; set; }
         public string CompanySummary { get; set; }
         public string CompanyWebPage { get; set; }
+        public string RFC { get; set; }
+
+        public string PhoneNumber { get; set; }
         public DateTime? RegistryDate { get; set; }
         public DateTime? CompanyBirthDate { get; set; }
         public int? EmployeesQty { get; set; }
         public Guid? CategoryId { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+
         public string MainAddress { get; set; }
 
     }

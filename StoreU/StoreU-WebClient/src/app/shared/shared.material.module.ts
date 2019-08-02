@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatFormFieldModule, MatSnackBarModule, matSnackBarAnimations, MatInputModule,MatIconModule, MatSlideToggleModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatFormFieldModule, MatSnackBarModule, 
+       MatInputModule,MatIconModule, MatSlideToggleModule, MatDatepickerModule, MatNativeDateModule,MatButtonToggleModule} from '@angular/material';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 
 @NgModule({
@@ -12,6 +13,9 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonToggleModule,
     MatSnackBarModule,
     MatInputModule,
     MatIconModule,
@@ -22,7 +26,10 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
     MatButtonModule, 
     MatCheckboxModule,
     MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
+    MatButtonToggleModule,
     MatSnackBarModule,
     MatInputModule,
     MatPasswordStrengthModule,

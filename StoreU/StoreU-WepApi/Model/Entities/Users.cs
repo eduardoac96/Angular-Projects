@@ -22,6 +22,8 @@ namespace StoreU_WebApi.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string SecondLastName { get; set; }
+        public string PersonalPhoneNumber { get; set; }
+
         public DateTime? BirthDate { get; set; }
         public DateTime? RegistryDate { get; set; }
         public int? RoleId { get; set; }

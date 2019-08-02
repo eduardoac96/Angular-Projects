@@ -1,4 +1,3 @@
- 
 <div class="forgot-page">
   <div class="content">
     <form
@@ -7,17 +6,21 @@
       fxFlex
       (ngSubmit)="reset(confirmPasswordForm)"
     >
-      <div class="text-center">
-        <h2 class="app-name">Store U</h2>
-      </div>
-      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
-        <div fxFlexFill>
-
+    <div fxFlex fxLayout="column" fxFlexFill>
+        <div>
+          <div class="text-center">
+            <h2 class="app-name">Store U</h2>
+          </div>
+        </div>
+        <div>
           <label>Escribe tu nueva contraseña.</label>
 
-          <mat-form-field floatPlaceholder="auto" class="w-100">
-              <mat-pass-toggle-visibility #toggle matSuffix></mat-pass-toggle-visibility>
- 
+          <mat-form-field floatPlaceholder="auto" >
+            <mat-pass-toggle-visibility
+              #toggle
+              matSuffix
+            ></mat-pass-toggle-visibility>
+
             <input
               matInput
               placeholder="Nueva contraseña"
@@ -31,19 +34,19 @@
               {{ passwordRaw.value.length }} / 25
             </mat-hint>
           </mat-form-field>
-          <mat-password-strength #passwordComponent [password]="passwordRaw.value"  class="green">
+          <mat-password-strength
+            #passwordComponent
+            [password]="passwordRaw.value"
+            class="green"
+          >
           </mat-password-strength>
-
-       
         </div>
-      </div>
-
-      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
-
-        <div fxFlexFill>
-          
-          <mat-form-field floatPlaceholder="auto" class="w-100">
-              <mat-pass-toggle-visibility #toggleConfirm matSuffix></mat-pass-toggle-visibility>
+        <div>
+          <mat-form-field floatPlaceholder="auto">
+            <mat-pass-toggle-visibility
+              #toggleConfirm
+              matSuffix
+            ></mat-pass-toggle-visibility>
 
             <input
               matInput
@@ -53,51 +56,52 @@
               #passwordConfirmation
               [type]="toggleConfirm.type"
               required
-          
             />
             <mat-hint align="end" aria-live="polite">
               {{ passwordConfirmation.value.length }} / 25
             </mat-hint>
           </mat-form-field>
-          <mat-password-strength #passwordComponent [password]="passwordConfirmation.value" class="green"> 
+          <mat-password-strength
+            #passwordComponent
+            [password]="passwordConfirmation.value"
+            class="green"
+          >
           </mat-password-strength>
- 
-          <mat-error
-          *ngIf="passwordRaw.value !== passwordConfirmation.value">
-          Password is not the same
-        </mat-error>
+
+          <mat-error *ngIf="passwordRaw.value !== passwordConfirmation.value">
+            Password is not the same
+          </mat-error>
         </div>
-        <mat-slide-toggle #toggleDetails>Show Password Details</mat-slide-toggle>
-        <mat-password-strength-info
-        *ngIf="toggleDetails.checked"
-
-        lowerCaseCriteriaMsg="Al menos una letra minuscula"
-        upperCaseCriteriaMsg="Al menos una letra mayuscula"
-        digitsCriteriaMsg="Al menos un número"
-        specialCharsCriteriaMsg="Al menos un caracter especial"
-        minCharsCriteriaMsg="Al menos 8 caracteres"
-        [passwordComponent]="passwordComponent">
-      </mat-password-strength-info>
-      </div>
-
-      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
-        <div fxFlexFill>
+        <div>
+          <mat-slide-toggle #toggleDetails
+            >Show Password Details</mat-slide-toggle
+          >
+          <mat-password-strength-info
+            *ngIf="toggleDetails.checked"
+            lowerCaseCriteriaMsg="Al menos una letra minuscula"
+            upperCaseCriteriaMsg="Al menos una letra mayuscula"
+            digitsCriteriaMsg="Al menos un número"
+            specialCharsCriteriaMsg="Al menos un caracter especial"
+            minCharsCriteriaMsg="Al menos 8 caracteres"
+            [passwordComponent]="passwordComponent"
+          >
+          </mat-password-strength-info>
+        </div>
+        <div>
           <button
             mat-raised-button
             color="primary"
             class="w-100"
             type="submit"
             [disabled]="!confirmPasswordForm.valid"
-            
           >
             Confirmar
           </button>
         </div>
-      </div>
-
-      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
-        <div fxFlexFill class="text-center forgot-password">
-          <a [routerLink]="['/forgot/code']">Regresar</a>
+        <div>
+          <div class="text-center forgot-password">
+            <a [routerLink]="['/forgot']">Regresar</a>
+          </div>
         </div>
       </div>
     </form>

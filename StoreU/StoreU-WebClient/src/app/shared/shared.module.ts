@@ -23,10 +23,10 @@ import { GlobalErrorHandler } from './helpers/global-error-handler';
     SharedMaterialModule, 
     HttpClientModule,
     FormsModule,
-    FlexLayoutModule.withConfig({addFlexToParent: false}),
+    FlexLayoutModule,
     SweetAlert2Module
   ],
-  exports: [FormsModule, SweetAlert2Module],
+  exports: [FormsModule, SweetAlert2Module, FlexLayoutModule],
   providers: [AuthService, GlobalErrorHandler,
     {
       provide: HTTP_INTERCEPTORS,

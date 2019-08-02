@@ -17,6 +17,8 @@ namespace StoreU_DomainEntities.Users
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string SecondLastName { get; set; }
+
+        public string PersonalPhoneNumber { get; set; }
         public string FullName
         {
             get

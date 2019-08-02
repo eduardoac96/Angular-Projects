@@ -36,7 +36,7 @@ namespace StoreU_WebApi.Services.Users
         {
             userToAdd.UserId = Guid.NewGuid();
             userToAdd.RegistryDate = DateTime.Now;
-             
+
             var passwordResult = password.CreatePasswordHash();
 
             userToAdd.PasswordHash = passwordResult.PasswordHash;
@@ -104,7 +104,7 @@ namespace StoreU_WebApi.Services.Users
             return (totalUsers, data);
         }
 
-       
+
         public async Task<bool> SaveAsync()
         {
             return (await _context.SaveChangesAsync()) >= 0;
@@ -138,33 +138,31 @@ namespace StoreU_WebApi.Services.Users
 
             var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == email);
 
-            if(user == null)
+            if (user == null)
                 throw new Exception("Email no existe");
-
-            //int activationCode = calculateActivationCode();-
 
             string tokenUser = EncryptionHelper.Encrypt(user.UserId.ToString(), Constants.Constants.TOKEN_KEY);
 
-            tokenUser = HttpUtility.UrlEncode(tokenUser); 
+            tokenUser = HttpUtility.UrlEncode(tokenUser);
 
-            sendEmailGenerationCode(email,tokenUser);
+            sendEmailGenerationCode(email, tokenUser);
 
             return new UserResponseEmailDto
             {
                 UserId = user.UserId,
-                Email = user.UserName, 
+                Email = user.UserName,
                 TokenUser = tokenUser
             };
         }
-         
-         
-            /// <summary>
-            /// Returns a Tuple: string Token, string TokenExpiration
-            /// </summary>
-            /// <param name="userId"></param>
-            /// <param name="role"></param>
-            /// <param name="appSecret"></param>
-            /// <returns></returns>
+
+
+        /// <summary>
+        /// Returns a Tuple: string Token, string TokenExpiration
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="role"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
         public (string Token, string TokenExpiration) GenerateToken(Guid userId, int role, string appSecret)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -186,7 +184,7 @@ namespace StoreU_WebApi.Services.Users
             return (tokenHandler.WriteToken(token), new DateTimeOffset(expirationDate, TimeSpan.FromMilliseconds(0)).ToString(Constants.Constants.DATE_TIME_WITH_TIMEZONE_FORMAT));
         }
 
-         
+
         private void sendEmailGenerationCode(string email, string tokenUser)
         {
             MailMessage message = new MailMessage();
@@ -202,31 +200,28 @@ namespace StoreU_WebApi.Services.Users
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = new NetworkCredential(Constants.Constants.EMAILTO, Constants.Constants.EMAILPWD);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.SendAsync(message,null);
+            smtp.SendAsync(message, null);
         }
-          
+
         public async Task SetPassword(UserChangePasswordDto userChangePassword)
         {
             if (userChangePassword.PasswordRaw != userChangePassword.PasswordConfirmation)
                 throw new Exception("Contraseña y confirmación deben de coincidir");
-             
-            //string tokenUser = HttpUtility.UrlDecode(userChangePassword.UserToken);
 
             var decryptedToken = EncryptionHelper.Decrypt(userChangePassword.UserToken, Constants.Constants.TOKEN_KEY);
-             
+
             bool isValidUserGuid = Guid.TryParse(decryptedToken, out Guid userGuid);
 
             if (!isValidUserGuid)
                 throw new Exception("Token incorrecto");
-
 
             var user = _context.Users.SingleOrDefault(x => x.UserId == userGuid);
 
             if (user == null)
                 throw new Exception("Usuario no existe");
 
-           var passwordResult = PasswordHelper.CreatePasswordHash(userChangePassword.PasswordRaw);
-             
+            var passwordResult = PasswordHelper.CreatePasswordHash(userChangePassword.PasswordRaw);
+
             user.PasswordHash = passwordResult.PasswordHash;
             user.Password = passwordResult.PasswordSalt;
 
@@ -237,12 +232,12 @@ namespace StoreU_WebApi.Services.Users
         private string generateTemplate(string name, string tokenUser)
         {
             var assembly = Assembly.GetExecutingAssembly();
-             
+
             var htmlStream = Path.GetFullPath("~/Assets/EmailTemplates/ForgotPassword/GenerationCode.html").Replace("~\\", "");
 
             // Perform replacements on the HTML file (if you're using it as a template).
             var reader = new StreamReader(htmlStream);
-             
+
             var body = reader
                 .ReadToEnd()
                 .Replace("{0}", name)
@@ -251,6 +246,6 @@ namespace StoreU_WebApi.Services.Users
             return body;
         }
 
-        
+
     }
 }

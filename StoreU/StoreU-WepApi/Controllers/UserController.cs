@@ -19,8 +19,7 @@ namespace StoreU_WebApi.Controllers
     {
         private IUsersRepository _repository;
         private IMapper _mapper;
-        private readonly ILogger<UserController> _logger;
-
+        private readonly ILogger<UserController> _logger; 
         private IConfiguration _configuration;
 
         public UserController(IMapper mapper, IConfiguration configuration, ILogger<UserController> logger, IUsersRepository repository)
@@ -79,8 +78,7 @@ namespace StoreU_WebApi.Controllers
         {
             try
             {
-               var userResponse = await _repository.GenerateCode(email);
-
+               var userResponse = await _repository.GenerateCode(email); 
                 string message = $"Código enviado al correo {userResponse.Email}";
                 _logger.LogInformation(message);
                 return Ok(userResponse);

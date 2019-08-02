@@ -1,0 +1,165 @@
+<!-- <app-loader></app-loader> -->
+<div class="register-page">
+  <div class="content">
+    <form
+      #registerForm="ngForm"
+      class="register-form"
+      fxFlex
+      (ngSubmit)="sendEmail(registerForm)"
+    >
+      <div fxFlex fxLayout="column" fxFlexFill>
+        <div>
+          <div class="text-center">
+            <h2 class="app-name">Store U</h2>
+          </div>
+        </div>
+
+        <div>
+          <h3>Datos de tu Empresa</h3>
+
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="RFC."
+              ngModel
+              name="rfc"
+              type="text"
+              required
+              autocomplete="off"
+              maxlength="80"
+              #firstnameCtrl="ngModel"
+            />
+            <mat-error *ngIf="rfcCtrl?.errors?.required"
+              >Campo requerido</mat-error
+            >
+
+            <mat-error *ngIf="firstNameCtrl?.errors?.maxlength"
+              >Excede el número de caracteres.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="w-100">
+            <input
+              matInput
+              placeholder="Contacto Empresa"
+              ngModel
+              name="phoneNumber"
+              type="text"
+              required
+              autocomplete="off"
+              maxlength="80"
+              #phoneNumberCtrl="ngModel"
+            />
+
+            <mat-error *ngIf="phoneNumberCtrl?.errors?.maxlength">
+              Excede el número de catacteres.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="w-100">
+            <input
+              matInput
+              placeholder="Dirección Empresa"
+              ngModel
+              name="companyAddress"
+              type="text"
+              required
+              autocomplete="off"
+              maxlength="80"
+              #companyAddressCtrl="ngModel"
+            />
+
+            <mat-error *ngIf="companyAddressCtrl?.errors?.maxlength">
+              Excede el número de catacteres.
+            </mat-error>
+          </mat-form-field>
+        </div>
+ 
+
+        <div>
+
+          <mat-form-field fxFlex="40">
+            <input
+            matInput
+            placeholder="País"
+            ngModel
+            name="country"
+            type="text"
+            required
+            autocomplete="off"
+            maxlength="80"
+            #countryCtrl="ngModel"
+          />
+        </mat-form-field>
+          <mat-form-field fxFlex="40" fxFlexOffset="20">
+            <input
+              matInput
+              placeholder="Código Postal"
+              ngModel
+              name="zipCode"
+              type="text"
+              required
+              autocomplete="off"
+              maxlength="80"
+              #zipCodeCtrl="ngModel"
+            />
+
+            <mat-error *ngIf="zipCodeCtrl?.errors?.maxlength">
+              Excede el número de caracteres.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field fxFlex="40">
+            <input
+              matInput
+              placeholder="Estado"
+              ngModel
+              name="state"
+              type="text"
+              required
+              autocomplete="off"
+              maxlength="80"
+              #stateCtrl="ngModel"
+            />
+          </mat-form-field>
+          <mat-form-field fxFlex="40" fxFlexOffset="20">
+              <input
+                matInput
+                placeholder="Ciudad"
+                ngModel
+                name="city"
+                type="text"
+                required
+                autocomplete="off"
+                maxlength="80"
+                #cityCtrl="ngModel"
+              />
+            </mat-form-field>
+        </div> 
+        <div>
+            <button
+              mat-raised-button
+              color="primary"
+              class="w-100"
+              type="submit"
+              [disabled]="!registerForm.valid"
+            >
+              Continuar y Guardar
+            </button>
+          </div>
+          <div fxFlexFill class="text-center backButton">
+              <a [routerLink]="['/login']">Regresar</a>
+            </div>
+      </div>
+
+   
+
+     
+    </form>
+  </div>
+</div>
